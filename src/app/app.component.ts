@@ -13,6 +13,10 @@ import { CommonModule } from '@angular/common';
 export class AppComponent {
   title = 'template-driven-form';
 
+  firstName: string = '';
+  lastName: string = '';
+  emailAddress: string = '';
+
   @ViewChild('registrationForm') form: NgForm;
 
   genders = [
