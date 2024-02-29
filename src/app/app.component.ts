@@ -17,6 +17,8 @@ export class AppComponent {
   lastName: string = '';
   emailAddress: string = '';
 
+  defaultCountry: string = 'Country';
+
   @ViewChild('registrationForm') form: NgForm;
 
   genders = [
@@ -32,9 +34,15 @@ export class AppComponent {
     // console.log(this.form.value.lastname);
     // console.log(this.form.value.email);
     // console.log(this.form.value.country);
-    console.log(this.form.controls['firstname'].value);
-    console.log(this.form.controls['lastname'].value);
-    console.log(this.form.controls['email'].value);
-    console.log(this.form.controls['country'].value);
+    // console.log(this.form.controls['firstname'].value);
+    // console.log(this.form.controls['lastname'].value);
+    // console.log(this.form.controls['email'].value);
+    // console.log(this.form.controls['country'].value);
+
+    console.log(this.form.value.firstname);
+    console.log(this.form.value.lastname);
+    console.log(this.form.value.email);
+    console.log(this.form.value.address.country);
+    console.log(this.form.value.address.city);
   }
 }
