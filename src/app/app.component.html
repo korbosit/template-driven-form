@@ -44,6 +44,7 @@
       <input type="text" placeholder="username" name="username" ngModel required #uname="ngModel" />
       <button class="btn-gen-username"
         [disabled]="fname.invalid || lname.invalid || tempdob.invalid" (click)="GenerateUserName()"
+        type="button"
         >
         Create a Username
       </button>
