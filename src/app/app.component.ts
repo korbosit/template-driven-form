@@ -17,45 +17,50 @@ export class AppComponent {
   lastName: string = '';
   dob: string = '';
   emailAddress: string = '';
-
-  defaultCountry: string = 'Country';
+  gender: string = '';
+  country: string = '';
+  city: string = '';
+  region: string = '';
+  postal: string = '';
+  userName: string = '';
+  IsAgreed: boolean = false;
 
   @ViewChild('registrationForm') form: NgForm;
 
   genders = [
     { id: 'check-male', value: 'male', display: 'Male' },
     { id: 'check-female', value: 'female', display: 'Female' },
-    { id: 'check-other', value: 'other', display: 'prefer not to say' },
+    { id: 'check-other', value: 'other', display: 'Prefer not to say' },
   ];
 
+  defaultGender: string = 'male';
+  defaultCountry: string = 'India';
+
   OnFormSubmitted() {
-    // console.log('Form submitted');
     console.log(this.form);
-    // console.log(this.form.value.firstname);
-    // console.log(this.form.value.lastname);
-    // console.log(this.form.value.email);
-    // console.log(this.form.value.country);
-    // console.log(this.form.controls['firstname'].value);
-    // console.log(this.form.controls['lastname'].value);
-    // console.log(this.form.controls['email'].value);
-    // console.log(this.form.controls['country'].value);
 
-    console.log(this.form.value.firstname);
-    console.log(this.form.value.lastname);
-    console.log(this.form.value.email);
-    console.log(this.form.value.address.country);
-    console.log(this.form.value.address.city);
+    this.firstName = this.form.value.firstname;
+    this.lastName = this.form.value.lastname;
+    this.emailAddress = this.form.value.email;
+    this.country = this.form.value.address.country;
+    this.city = this.form.value.address.city;
+    this.region = this.form.value.address.region;
+    this.postal = this.form.value.address.postal;
+    this.userName = this.form.value.username;
+    this.dob = this.form.value.dob;
+    this.IsAgreed = this.form.value;
 
-    this.form.reset();
+    //this.form.reset();
+
     this.form.form.patchValue({
       gender: 'male',
       address: {
-        country: 'Japan',
+        country: 'India',
       },
     });
   }
 
-  GenerateUserName() {
+  GenerateUsername() {
     let username = '';
 
     if (this.firstName.length >= 3) {
@@ -63,6 +68,7 @@ export class AppComponent {
     } else {
       username += this.firstName;
     }
+
     if (this.lastName.length >= 3) {
       username += this.lastName.slice(0, 3);
     } else {
@@ -76,12 +82,8 @@ export class AppComponent {
 
     console.log(username);
 
-    // this.form.value.usename = username;
-    // console.log(this.form.value.usename);
-
     // this.form.controls['username'].value = username;
-
-    // The setValue() method is used to update a FormContol, FormGroup or FormArray value. To the setValue() method, we pass an object to update the value of a FormContol, FormGroup or FormArray. The structure of that object must match the structure of FormContol, FormGroup or FormArray which we are trying to update.
+    // console.log(this.form.value.username)
 
     // this.form.setValue({
     //   firstname: this.form.value.firstname,
@@ -97,17 +99,15 @@ export class AppComponent {
     //     country: this.form.value.address.country,
     //     city: this.form.value.address.city,
     //     region: this.form.value.address.region,
-    //     postal: this.form.value.address.postal,
-    //   },
-    // });
-
-    // The patchValue() method is used to update only a subset of the element of FormGroup or FormArray value.It will only update the matching objects and ignores the rest.
+    //     postal: this.form.value.address.postal
+    //   }
+    // })
 
     this.form.form.patchValue({
       username: username,
       // address: {
-      //   country: 'Japan',
-      // },
+      //   country: 'Japan'
+      // }
     });
   }
 }
